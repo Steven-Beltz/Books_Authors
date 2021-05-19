@@ -1,0 +1,56 @@
+Book.objects.create(title="C Sharp", desc = "unknown to user, but heard its difficult to learn")
+Book.objects.create(title="Java", desc = "unknown to user, but knows its not Java Script")
+Book.objects.create(title="Python", desc = "user approved language")
+Book.objects.create(title="PHP", desc = "unknown to user, sounds like a chemical")
+Book.objects.create(title="Ruby", desc = "unknown to user, sounds valuable")
+
+Author.objects.create(first_name="Jane", last_name="Austen")
+Author.objects.create(first_name="Emily", last_name="Dickerson")
+Author.objects.create(first_name="Fyord", last_name="Dostoevsky")
+Author.objects.create(first_name="William", last_name="Shakespeare")
+Author.objects.create(first_name="Lau", last_name="Tzu")
+
+c = Book.objects.get(id=1)
+c.title = "C#"
+c.save()
+
+c = Author.objects.get(id=4)
+c.first_name ="Bill"
+c.save()
+
+this_author = Author.objects.get(id=1)
+this_author.book.add(Book.objects.get(id=1))
+this_author.book.add(Book.objects.get(id=2))
+
+this_author = Author.objects.get(id=2)
+this_author.book.add(Book.objects.get(id=1))
+this_author.book.add(Book.objects.get(id=2))
+this_author.book.add(Book.objects.get(id=3))
+
+this_author = Author.objects.get(id=3)
+this_author.book.add(Book.objects.get(id=1))
+this_author.book.add(Book.objects.get(id=2))
+this_author.book.add(Book.objects.get(id=3))
+this_author.book.add(Book.objects.get(id=4))
+
+this_author = Author.objects.get(id=4)
+this_author.book.add(Book.objects.get(id=1))
+this_author.book.add(Book.objects.get(id=2))
+this_author.book.add(Book.objects.get(id=3))
+this_author.book.add(Book.objects.get(id=4))
+this_author.book.add(Book.objects.get(id=5))
+
+Book.objects.get(id=3).author.all()
+
+Book.objects.get(id=3).author.remove(Author.objects.first())
+
+Book.objects.get(id=2).author.add(Author.objects.get(id=5))
+
+Author.objects.get(id=3).book.all()
+
+Book.objects.get(id=5).author.all()
+
+
+
+
+
